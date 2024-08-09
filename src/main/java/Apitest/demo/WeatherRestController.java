@@ -4,18 +4,40 @@ package Apitest.demo;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @RestController
 public class WeatherRestController {
 
+
+
+    WeatherService weatherService;
+    public WeatherRestController(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
+
+    @GetMapping("/info")
+    public List<WeatherResponseDto.WeatherData> info() {
+        return weatherService.info();
+    }
+
+
+    @GetMapping("/infoForToday")
+    public List<WeatherResponseDto2.WeatherData> info2() {
+        return weatherService.info2();
+    }
 
 
     @GetMapping("/Today_Time_Weather/{Date}")
     public Weather_Tool2 Data1 (@PathVariable Long Date){
 
         RestTemplate Data1 = new RestTemplate();
-        String url = "https://apihub.kma.go.kr/api/typ01/url/kma_sfctm2.php?tm=202408090900&stn=108&help=1&authKey=JbGQz-C3S5CxkM_gtwuQQw";
+        String url1 = "https://apihub.kma.go.kr/api/typ01/url/kma_sfctm2.php?tm=";
+        String url2 = "&stn=108&help=1&authKey=JbGQz-C3S5CxkM_gtwuQQw";
+        String url3 = String.valueOf(Date);
+        String full = url1 + url3 + url2;
 
-        String response1 = Data1.getForObject(url, String.class);
+        String response1 = Data1.getForObject(full, String.class);
 
         System.out.println(Date);
 
@@ -43,12 +65,11 @@ public class WeatherRestController {
 //        System.out.println( dataLine);
 
 
-
         if(dataLine!=null){
             String[] fields = dataLine.split("\\s+");
 
 
-//            Double A = ((Double.parseDouble(fields[11])));
+//            Double A = ((Double.parseDouble(fields[11 ])));
 
             DataWeather1.setTemperature(String.valueOf(fields[11]));
 
@@ -65,6 +86,13 @@ public class WeatherRestController {
 
         return DataWeather1;
   }
+
+
+  @GetMapping("/123")
+    public WeatherInfo abc() {
+        return WeatherFetcher.fetchWeather("Seoul,KR");
+  }
+
 
 
 
