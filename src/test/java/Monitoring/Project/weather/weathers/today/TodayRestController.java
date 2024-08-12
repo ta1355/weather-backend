@@ -1,7 +1,7 @@
-package Monitoring.Project.weather.today;
+package Monitoring.Project.weather.weathers.today;
 
 
-import Monitoring.Project.weather.KoreanCity;
+import Monitoring.Project.weather.weathers.KoreanCity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

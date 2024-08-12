@@ -1,4 +1,4 @@
-package Monitoring.Project.weather.today;
+package Monitoring.Project.weather.weathers.today;
 
 import java.util.List;
 

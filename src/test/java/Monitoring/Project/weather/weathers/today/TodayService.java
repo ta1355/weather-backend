@@ -1,7 +1,7 @@
-package Monitoring.Project.weather.today;
+package Monitoring.Project.weather.weathers.today;
 
 
-import Monitoring.Project.weather.KoreanCity;
+import Monitoring.Project.weather.weathers.KoreanCity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 

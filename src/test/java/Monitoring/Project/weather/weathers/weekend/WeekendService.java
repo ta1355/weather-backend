@@ -1,7 +1,7 @@
-package Monitoring.Project.weather.weekend;
+package Monitoring.Project.weather.weathers.weekend;
 
 
-import Monitoring.Project.weather.KoreanCity;
+import Monitoring.Project.weather.weathers.KoreanCity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;

@@ -1,4 +1,4 @@
-package Monitoring.Project.weather;
+package Monitoring.Project.weather.weathers;
 
 import jakarta.persistence.*;
 

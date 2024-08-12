@@ -1,4 +1,4 @@
-package Monitoring.Project.weather.now;
+package Monitoring.Project.weather.weathers.now;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-import Monitoring.Project.weather.KoreanCity;
+import Monitoring.Project.weather.weathers.KoreanCity;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 

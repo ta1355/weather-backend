@@ -1,6 +1,6 @@
-package Monitoring.Project.weather.now;
+package Monitoring.Project.weather.weathers.now;
 
-import Monitoring.Project.weather.KoreanCity;
+import Monitoring.Project.weather.weathers.KoreanCity;
 import org.springframework.stereotype.Service;
 
 @Service
