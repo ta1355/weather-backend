@@ -1,4 +1,4 @@
-package Monitoring.Project.weather;
+package Monitoring.Project.weather.now;
 
 //dto
 public class NowResponseDto {

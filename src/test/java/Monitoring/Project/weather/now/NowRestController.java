@@ -1,5 +1,6 @@
-package Monitoring.Project.weather;
+package Monitoring.Project.weather.now;
 
+import Monitoring.Project.weather.KoreanCity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
