@@ -1,6 +1,7 @@
 package Monitoring.Project.weather.user;
 
 
+import Monitoring.Project.weather.weathers.now.NowResponseDto;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 

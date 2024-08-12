@@ -2,6 +2,7 @@ package Monitoring.Project.weather.user;
 
 
 
+import Monitoring.Project.weather.weathers.now.NowResponseDto;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
