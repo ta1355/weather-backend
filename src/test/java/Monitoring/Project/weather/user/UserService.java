@@ -1,7 +1,7 @@
 package Monitoring.Project.weather.user;
 
 
-import Apitest.demo.weather.weathers.weathernow.NowResponseDto;
+
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
