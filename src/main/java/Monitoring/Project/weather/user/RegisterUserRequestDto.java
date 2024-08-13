@@ -7,7 +7,7 @@ public record RegisterUserRequestDto(
         String email,
         String password,
         String nickname,
-        LocalDate birthday
+        String birthday
 )
 {
 

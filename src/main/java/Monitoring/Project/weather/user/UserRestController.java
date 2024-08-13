@@ -18,8 +18,8 @@ public class UserRestController {
 
     // 회원가입
     @PostMapping("/userCreate")
-    public void register(@RequestBody RegisterUserRequestDto request) {
-        userService.create(request);
+    public User register(@RequestBody RegisterUserRequestDto request) {
+        return userService.create(request);
     }
 
     // 로그인

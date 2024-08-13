@@ -6,6 +6,8 @@ import Monitoring.Project.weather.weathers.now.NowResponseDto;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -51,14 +53,20 @@ public class UserService {
 
 
     // 회원 가입
-    public void create(RegisterUserRequestDto request) {
+    public User create(RegisterUserRequestDto request) {
+
+        LocalDate birthday;
+                  birthday = LocalDate.parse(request.birthday());
+
 
         User newUser = userRepository.save(new User(
                 request.email(),
                 SecurityUtils.sha256Encrypt(request.password()),
                 request.nickname(),
-                request.birthday()
+                birthday
         ));
+
+        return newUser;
     }
 
 
