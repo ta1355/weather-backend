@@ -20,7 +20,7 @@ public class TodayRestController {
     @GetMapping("/Today/{city}")
     public List<TodayTimesDto.WeatherData> Seoul(@PathVariable String city) {
         KoreanCity koreanCity = KoreanCity.fromString(city);
-        return todayService.today(koreanCity);
+        return todayService.todayAndTomorrow(koreanCity);
     }
 
 }
