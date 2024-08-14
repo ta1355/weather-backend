@@ -3,9 +3,12 @@ package Monitoring.Project.weather.user;
 
 import Monitoring.Project.weather.weathers.now.NowResponseDto;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserRestController {
@@ -24,9 +27,13 @@ public class UserRestController {
 
     // 로그인
     @PostMapping("/login")
-    public String  login(@Valid @RequestBody LoginRequest request) {
-        return userService.authenticateAndGenerateToken(request);
+    public ResponseEntity<Map<String, String>> login(@Valid @RequestBody LoginRequest request) {
+        String token = userService.authenticateAndGenerateToken(request);
+        Map<String, String> response = new HashMap<>();
+        response.put("token", token);
+        return ResponseEntity.ok(response);
     }
+
 
     // 회원 탈퇴
     @DeleteMapping("/user")
