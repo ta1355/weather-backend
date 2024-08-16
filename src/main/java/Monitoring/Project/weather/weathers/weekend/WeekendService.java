@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class WeekendService {
 
+
     @Value("${secretKeyKim}") String secretKey;
 
     public List<WeekendResponseDto.WeatherData> weekend(KoreanCity city) {
