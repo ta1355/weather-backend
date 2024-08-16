@@ -54,15 +54,16 @@ public class UserRestController {
     }
 
     // 즐겨찾기 목록 등록
-    @PutMapping("/like/{userId}")
-    public void likeCities(@RequestBody LikeRequestDto requestDto, @PathVariable Long userId) {
-        userService.likeCities(requestDto, userId);
+    @PutMapping("/like")
+    public ResponseEntity<Void> likeCities(@RequestBody LikeRequestDto requestDto, @LoginUser String userEmail) {
+        userService.likeCities(requestDto, userEmail);
+        return ResponseEntity.ok().build();
     }
 
     // 즐겨찾기 목록 조회
-    @GetMapping("/likedCities/{userId}")
-    public List<NowResponseDto> readAllLikedCities(@PathVariable Long userId) {
-        return userService.readAllLikedCities(userId);
+    @GetMapping("/likedCities")
+    public List<NowResponseDto> readAllLikedCities(@LoginUser String userEmail) {
+        return userService.readAllLikedCities(userEmail);
     }
 
 }

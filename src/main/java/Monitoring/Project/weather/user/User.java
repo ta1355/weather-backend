@@ -4,6 +4,7 @@ import Monitoring.Project.weather.weathers.KoreanCity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "users")
@@ -27,7 +28,8 @@ public class User {
     @Column(nullable = false)
     private LocalDate birthday;
 
-    private List<KoreanCity> likedList;
+    @ElementCollection
+    private List<LikedList> likedList = new ArrayList<>();
 
     // constructors
     public User() {
@@ -67,12 +69,13 @@ public class User {
         return birthday;
     }
 
-    public List<KoreanCity> getLikedList() {
+    public List<LikedList> getLikedList() {
         return likedList;
     }
 
     // setter
-    public void setLikedList(List<KoreanCity> likedList) {
-        this.likedList = likedList;
+    public void setLikedList(List<LikedList> likedList) {
+        this.likedList.clear();
+        this.likedList.addAll(likedList);
     }
 }
