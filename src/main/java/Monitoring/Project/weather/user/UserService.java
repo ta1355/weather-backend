@@ -2,6 +2,7 @@ package Monitoring.Project.weather.user;
 
 
 
+import Monitoring.Project.weather.weathers.KoreanCity;
 import Monitoring.Project.weather.weathers.now.NowResponseDto;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -94,19 +95,23 @@ public class UserService {
     }
 
     // 즐겨찾기 목록 등록
-    public void likeCities(LikeRequestDto requestDto, Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(
+    @Transactional
+    public void likeCities(LikeRequestDto requestDto, String userEmail) {
+
+        User user = userRepository.findByEmail(userEmail).orElseThrow(
                 () -> new NoSuchElementException("해당 회원이 존재하지 않습니다.")
         );
 
-        user.setLikedList(requestDto.cities());
+        user.setLikedList(requestDto.cities()
+                .stream().map(c -> new LikedList(c))
+                .toList());
 
         userRepository.save(user);
     }
 
     // 즐겨찾기 목록 조회
-    public List<NowResponseDto> readAllLikedCities(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(
+    public List<NowResponseDto> readAllLikedCities(String userEmail) {
+        User user = userRepository.findByEmail(userEmail).orElseThrow(
                 () -> new NoSuchElementException("해당 회원이 존재하지 않습니다.")
         );
 

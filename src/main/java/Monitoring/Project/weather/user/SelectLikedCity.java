@@ -16,7 +16,8 @@ public class SelectLikedCity {
     // 메서드
     public List<NowResponseDto> addResponseCities(User user) {
 
-        List<KoreanCity> likedList = user.getLikedList();
+        List<KoreanCity> likedList = user.getLikedList()
+                .stream().map(l -> l.getLikedcity()).toList();
         List<KoreanCity> responseCities = new ArrayList<>();
 
         for (KoreanCity city : likedList) {
