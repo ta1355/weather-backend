@@ -60,6 +60,12 @@ public class UserRestController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/deleteLike")
+    public ResponseEntity<Void> deleteLike(@RequestBody LikeRequestDto requestDto, @LoginUser String userEmail) {
+        userService.deleteLikedCities(requestDto, userEmail);
+        return ResponseEntity.ok().build();
+    }
+
     // 즐겨찾기 목록 조회
     @GetMapping("/likedCities")
     public List<NowResponseDto> readAllLikedCities(@LoginUser String userEmail) {

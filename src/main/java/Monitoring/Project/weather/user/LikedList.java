@@ -22,4 +22,6 @@ public class LikedList {
     public KoreanCity getLikedcity() {
         return likedcity;
     }
+
+
 }

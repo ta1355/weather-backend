@@ -117,4 +117,29 @@ public class UserService {
 
         return selectLikedCity.addResponseCities(user);
     }
+
+    @Transactional
+    public void deleteLikedCities(LikeRequestDto requestDto, String userEmail) {
+        User user = userRepository.findByEmail(userEmail).orElseThrow(
+                () -> new NoSuchElementException("해당 회원이 존재하지 않습니다.")
+        );
+
+
+        List<LikedList> currentLikedList = user.getLikedList();
+
+
+        List<KoreanCity> citiesToRemove = requestDto.cities();
+
+
+        currentLikedList.removeIf(likedCity -> citiesToRemove.stream()
+                .anyMatch(cityToRemove -> cityToRemove.equals(likedCity.getLikedcity())));
+
+
+        user.setLikedList(currentLikedList);
+
+
+        userRepository.save(user);
+    }
+
+
 }
