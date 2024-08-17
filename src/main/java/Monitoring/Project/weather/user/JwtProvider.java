@@ -101,4 +101,8 @@ public class JwtProvider {
     public void logout(String token) {
         blacklistedTokens.add(token);
     }
+
+    public void clearBlacklistedTokens() {
+        blacklistedTokens.clear();
+    }
 }

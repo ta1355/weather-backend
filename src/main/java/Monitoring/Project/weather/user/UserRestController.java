@@ -31,6 +31,7 @@ public class UserRestController {
         String token = userService.authenticateAndGenerateToken(request);
         Map<String, String> response = new HashMap<>();
         response.put("token", token);
+        System.out.println(token);
         return ResponseEntity.ok(response);
     }
 
@@ -49,7 +50,7 @@ public class UserRestController {
 
     // 로그아웃
     @PostMapping("/logout")
-    public void logOut(@LoginUser String userEmail){
+    public void logOut(@LoginUser String userEmail) {
         userService.logOut(userEmail);
     }
 
@@ -60,16 +61,18 @@ public class UserRestController {
         return ResponseEntity.ok().build();
     }
 
+    // 즐겨찾기 목록 삭제
     @DeleteMapping("/deleteLike")
     public ResponseEntity<Void> deleteLike(@RequestBody LikeRequestDto requestDto, @LoginUser String userEmail) {
         userService.deleteLikedCities(requestDto, userEmail);
         return ResponseEntity.ok().build();
     }
 
-    // 즐겨찾기 목록 조회
+
     @GetMapping("/likedCities")
-    public List<NowResponseDto> readAllLikedCities(@LoginUser String userEmail) {
-        return userService.readAllLikedCities(userEmail);
+    public List<LikeRequestDto> readAllLikedCities(@LoginUser String userEmail) {
+        List<LikeRequestDto> Data1 = userService.readAllLikedCities(userEmail);
+        return Data1;
     }
 
 }
