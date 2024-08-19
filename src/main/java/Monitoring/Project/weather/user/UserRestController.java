@@ -29,8 +29,12 @@ public class UserRestController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@Valid @RequestBody LoginRequest request) {
         String token = userService.authenticateAndGenerateToken(request);
+        String nickname = userService.getUserNickname(request.email());
+
         Map<String, String> response = new HashMap<>();
         response.put("token", token);
+        response.put("nickname", nickname); // 닉네임도 같이 보냄
+
         System.out.println(token);
         return ResponseEntity.ok(response);
     }
