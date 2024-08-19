@@ -55,6 +55,12 @@ public class UserService {
         return jwtProvider.createToken(user.getEmail());
     }
 
+    // 닉네임 호출
+    public String getUserNickname(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException(""));
+        return user.getNickname();
+    }
 
     // 회원 가입
     public User create(RegisterUserRequestDto request) {
@@ -78,7 +84,7 @@ public class UserService {
 
     // 회원 정보 조회
     public UserResponse getCurrentUser(String userEmail) {
-        User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new IllegalArgumentException(""));
+        User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
         return new UserResponse(user.getEmail(), user.getNickname());
     }
 
