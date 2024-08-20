@@ -23,7 +23,7 @@ public class Post {
 
     private LocalDateTime createdTime = LocalDateTime.now();
 
-    private double count;
+    private int count;
 
     public Post() {
     }
@@ -54,7 +54,7 @@ public class Post {
         return createdTime;
     }
 
-    public double getCount() {
+    public int getCount() {
         return count;
     }
 
@@ -72,7 +72,7 @@ public class Post {
     }
 
     public void Views() {
-        this.count = count+0.5;
+        this.count = count + 1;
 
     }
 
