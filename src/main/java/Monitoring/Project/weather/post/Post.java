@@ -51,11 +51,11 @@ public class Post {
         return createdTime;
     }
 
-    public void setContents(String contents) {
+    private void setContents(String contents) {
         this.contents = contents;
     }
 
-    public void setTitle(String title) {
+    private void setTitle(String title) {
         this.title = title;
     }
 

@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostService {
 
-   private final PostRepository postRepository;
+    private final PostRepository postRepository;
 
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
 
     public void create(PostDto dto) {
-     postRepository.save(new Post(dto.user(),dto.title(),dto.content()));
+        postRepository.save(new Post(dto.user(), dto.title(), dto.content()));
     }
 
     @Transactional

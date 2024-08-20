@@ -19,8 +19,8 @@ public class PostController {
 
     //게시글 수정
     @PutMapping("/updatePost/{id}")
-    public void  updatePost(@PathVariable Long id, @RequestBody PostDto dto) {
-     postService.update(id, dto);
+    public void updatePost(@PathVariable Long id, @RequestBody PostDto dto) {
+        postService.update(id, dto);
     }
 
     //게시글 삭제(하드)
@@ -31,13 +31,13 @@ public class PostController {
 
     //게시글 조회
     @GetMapping("/post")
-    public  void  findAll() {
+    public void findAll() {
         postService.findAll();
     }
 
     //게시글 상세 조회
     @GetMapping("/post/{id}")
-    public  void  findById(Long id) {
+    public void findById(Long id) {
         postService.findById(id);
     }
 }
