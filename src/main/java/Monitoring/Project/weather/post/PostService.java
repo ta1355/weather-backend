@@ -34,10 +34,16 @@ public class PostService {
     }
 
     @Transactional
-        public PostDto findById(Long id) {
+        public PostDetailResponseDto findById(Long id) {
         Post findPost = postRepository.findById(id).orElse(null);
 
-        PostDto NewPost = new PostDto(findPost.getTitle(), findPost.getContents(), findPost.getUser());
+        PostDetailResponseDto NewPost = new PostDetailResponseDto(
+                findPost.getTitle(),
+                findPost.getContents(),
+                findPost.getCreatedTime(),
+                findPost.getCount(),
+                findPost.getUser()
+        );
         findPost.Views();
         return NewPost;
     }
