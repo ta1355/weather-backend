@@ -31,7 +31,9 @@ public class PostService {
         postRepository.findAll();
     }
 
+    @Transactional
     public void findById(Long id) {
-        postRepository.findById(id);
+        Post findPost = postRepository.findById(id).orElse(null);
+        findPost.Views();
     }
 }

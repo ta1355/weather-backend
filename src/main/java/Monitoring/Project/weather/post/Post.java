@@ -22,6 +22,8 @@ public class Post {
 
     private LocalDateTime createdTime = LocalDateTime.now();
 
+    private int count;
+
     public Post() {
     }
 
@@ -51,6 +53,10 @@ public class Post {
         return createdTime;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     private void setContents(String contents) {
         this.contents = contents;
     }
@@ -62,5 +68,9 @@ public class Post {
     public void update(String contents, String title){
         setContents(contents);
         setTitle(title);
+    }
+
+    public void Views() {
+        this.count = count+1;
     }
 }

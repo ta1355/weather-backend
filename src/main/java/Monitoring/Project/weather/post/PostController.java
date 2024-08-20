@@ -37,7 +37,7 @@ public class PostController {
 
     //게시글 상세 조회
     @GetMapping("/post/{id}")
-    public void findById(Long id) {
+    public void findById(@PathVariable Long id) {
         postService.findById(id);
     }
 }
