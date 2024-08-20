@@ -40,6 +40,7 @@ public class PostService {
         Post findPost = postRepository.findById(id).orElse(null);
 
         PostDetailResponseDto NewPost = new PostDetailResponseDto(
+                findPost.getId(),
                 findPost.getTitle(),
                 findPost.getContents(),
                 findPost.getCreatedTime(),
