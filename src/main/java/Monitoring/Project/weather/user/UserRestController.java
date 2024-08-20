@@ -52,6 +52,12 @@ public class UserRestController {
         return userService.getCurrentUser(userEmail);
     }
 
+
+    @GetMapping("/getUser")
+    public RegisterUserRequestDto1 getuser(@LoginUser String userEmail){
+        return userService.getCurrentUser1(userEmail);
+    }
+
     // 로그아웃
     @PostMapping("/logout")
     public void logOut(@LoginUser String userEmail) {

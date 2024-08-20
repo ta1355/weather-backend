@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -142,4 +143,14 @@ public class UserService {
     }
 
 
+    public RegisterUserRequestDto1 getCurrentUser1(String userEmail) {
+        User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+
+        return new RegisterUserRequestDto1(
+                user.getEmail(),
+                user.getId(),
+                user.getPassword(),
+                user.getNickname(),
+                user.getBirthday());
+    }
 }

@@ -13,6 +13,7 @@ public class Post {
 
     private Long id;
 
+    @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne
     private User user;
 
@@ -72,5 +73,21 @@ public class Post {
 
     public void Views() {
         this.count = count+1;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
