@@ -16,13 +16,13 @@ public class PostController {
 
     // 게시글 생성
     @PostMapping("/createPost")
-    public void createPost(@RequestBody PostDto dto) {
+    public void createPost(@RequestBody RequestPostDto dto) {
         postService.create(dto);
     }
 
     //게시글 수정
     @PutMapping("/updatePost/{id}")
-    public void updatePost(@PathVariable Long id, @RequestBody PostDto dto) {
+    public void updatePost(@PathVariable Long id, @RequestBody RequestPostDto dto) {
         postService.update(id, dto);
     }
 

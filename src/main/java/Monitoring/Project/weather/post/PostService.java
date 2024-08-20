@@ -1,5 +1,6 @@
 package Monitoring.Project.weather.post;
 
+import Monitoring.Project.weather.user.User;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,13 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public void create(PostDto dto) {
-        postRepository.save(new Post(dto.user(), dto.title(), dto.contents()));
+    public void create(RequestPostDto dto) {
+        User user = dto.user();
+        postRepository.save(new Post(user, dto.title(), dto.contents()));
     }
 
     @Transactional
-    public void update(Long id, PostDto dto) {
+    public void update(Long id, RequestPostDto dto) {
         Post updatePost = postRepository.findById(id).orElse(null);
         updatePost.update(dto.contents(), dto.title());
     }
