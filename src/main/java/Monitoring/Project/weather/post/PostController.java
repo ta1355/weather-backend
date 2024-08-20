@@ -34,14 +34,15 @@ public class PostController {
 
     //게시글 조회
     @GetMapping("/post")
-    public void findAll() {
-        postService.findAll();
+    public ResponseEntity<List<Post>> findAll() {
+        List<Post> posts = postService.findAll();
+        return ResponseEntity.ok(posts);
     }
 
     //게시글 상세 조회
     @GetMapping("/post/{id}")
-    public void findById(@PathVariable Long id) {
-        postService.findById(id);
+    public PostDto findById(@PathVariable Long id) {
+        return postService.findById(id);
     }
 
     //검색 기능 (제목 , 내용 , 제목+내용)

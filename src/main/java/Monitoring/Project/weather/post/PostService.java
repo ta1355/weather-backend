@@ -29,14 +29,17 @@ public class PostService {
     }
 
 
-    public void findAll() {
-        postRepository.findAll();
+    public List<Post> findAll() {
+        return postRepository.findAll();
     }
 
     @Transactional
-    public void findById(Long id) {
+        public PostDto findById(Long id) {
         Post findPost = postRepository.findById(id).orElse(null);
+
+        PostDto NewPost = new PostDto(findPost.getTitle(), findPost.getContents(), findPost.getUser());
         findPost.Views();
+        return NewPost;
     }
 
     //제목 검색 서비스
