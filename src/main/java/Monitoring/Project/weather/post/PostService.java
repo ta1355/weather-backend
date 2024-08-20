@@ -35,14 +35,20 @@ public class PostService {
         return postRepository.findAll();
     }
 
-        @Transactional
-            public RequestPostDto findById(Long id) {
-            Post findPost = postRepository.findById(id).orElse(null);
+    @Transactional
+        public PostDetailResponseDto findById(Long id) {
+        Post findPost = postRepository.findById(id).orElse(null);
 
-            RequestPostDto NewPost = new RequestPostDto(findPost.getTitle(), findPost.getContents(), findPost.getUser());
-            findPost.Views();
-            return NewPost;
-        }
+        PostDetailResponseDto NewPost = new PostDetailResponseDto(
+                findPost.getTitle(),
+                findPost.getContents(),
+                findPost.getCreatedTime(),
+                findPost.getCount(),
+                findPost.getUser()
+        );
+        findPost.Views();
+        return NewPost;
+    }
 
     //제목 검색 서비스
     public List<Post> searchPostsByTitle(String keyword) {
