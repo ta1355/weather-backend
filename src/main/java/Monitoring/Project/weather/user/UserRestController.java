@@ -21,7 +21,7 @@ public class UserRestController {
 
     // 회원가입
     @PostMapping("/userCreate")
-    public User register(@RequestBody RegisterUserRequestDto request) {
+    public User register(@Valid @RequestBody RegisterUserRequestDto request) {
         return userService.create(request);
     }
 
