@@ -4,7 +4,7 @@ import Monitoring.Project.weather.user.User;
 
 public record PostDto(
         String title,
-        String content,
+        String contents,
         User user
 ) {
 

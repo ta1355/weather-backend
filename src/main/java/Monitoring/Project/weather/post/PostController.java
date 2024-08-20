@@ -1,6 +1,9 @@
 package Monitoring.Project.weather.post;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class PostController {
@@ -39,5 +42,24 @@ public class PostController {
     @GetMapping("/post/{id}")
     public void findById(@PathVariable Long id) {
         postService.findById(id);
+    }
+
+    //검색 기능 (제목 , 내용 , 제목+내용)
+    @GetMapping("/search/title")
+    public ResponseEntity<List<Post>> searchPostsByTitle(@RequestParam String keyword) {
+        List<Post> posts = postService.searchPostsByTitle(keyword);
+        return ResponseEntity.ok(posts);
+    }
+
+    @GetMapping("/search/content")
+    public ResponseEntity<List<Post>> searchPostsByContent(@RequestParam String keyword) {
+        List<Post> posts = postService.searchPostsByContent(keyword);
+        return ResponseEntity.ok(posts);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Post>> searchPostsByTitleOrContent(@RequestParam String keyword) {
+        List<Post> posts = postService.searchPostsByTitleOrContent(keyword);
+        return ResponseEntity.ok(posts);
     }
 }

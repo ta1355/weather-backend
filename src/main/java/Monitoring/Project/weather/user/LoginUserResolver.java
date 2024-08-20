@@ -40,7 +40,6 @@ public class LoginUserResolver implements HandlerMethodArgumentResolver {
         }
 
         String userEmail = jwtProvider.getSubject(token);
-        // 여기까지 중복코드
 
         return userEmail;
     }

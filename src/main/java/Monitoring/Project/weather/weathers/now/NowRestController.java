@@ -17,7 +17,6 @@ public class NowRestController {
     @GetMapping("/now/{nowCityEnum}")
     public NowResponseDto weather(@PathVariable String nowCityEnum) {
         KoreanCity koreanCity = KoreanCity.fromString(nowCityEnum);
-//        System.out.println(koreanCity);
         return nowService.weatherNow(koreanCity);
     }
 

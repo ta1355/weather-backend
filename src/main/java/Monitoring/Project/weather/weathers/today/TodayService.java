@@ -36,9 +36,6 @@ public class TodayService {
                 .body(TodayTimesDto.class);
 
 
-        System.out.println("API Response: " + body);
-
-
         List<TodayTimesDto.WeatherData> filteredData = body.list().stream()
                 .peek(weatherData -> System.out.println("Raw Weather Data: " + weatherData))
                 .filter(weatherData -> {
@@ -56,9 +53,6 @@ public class TodayService {
                     return weatherDate.equals(today) || weatherDate.equals(tomorrow);
                 })
                 .collect(Collectors.toList());
-
-        // Log the filtered results
-        System.out.println("Filtered Data: " + filteredData);
 
         return filteredData;
     }
