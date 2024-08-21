@@ -67,7 +67,7 @@ public class UserService {
     public User create(RegisterUserRequestDto request) {
 
         LocalDate birthday;
-        birthday = LocalDate.parse(request.birthday());
+        birthday = request.birthday();
 
 
         User newUser = userRepository.save(new User(request.email(), SecurityUtils.sha256Encrypt(request.password()), request.nickname(), birthday));
