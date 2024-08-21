@@ -2,7 +2,9 @@ package Monitoring.Project.weather.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 
@@ -18,8 +20,9 @@ public record RegisterUserRequestDto(
         @NotNull
         String nickname,
 
+        @PastOrPresent
         @NotNull
-        String birthday
+        LocalDate birthday
 )
 {
 
