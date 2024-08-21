@@ -26,7 +26,7 @@ public class WeekendService {
 
         // 데이터를 필터링하고 정렬합니다.
         List<WeekendResponseDto.WeatherData> weatherDataList = body.list().stream()
-                .filter(weatherData -> weatherData.dt_txt().endsWith("12:00:00") || weatherData.dt_txt().endsWith("00:00:00"))
+                .filter(weatherData -> weatherData.dt_txt().endsWith("06:00:00") || weatherData.dt_txt().endsWith("00:00:00"))
                 .collect(Collectors.toList());
 
         // 첫 번째 데이터는 12:00:00, 나머지 데이터는 00:00:00 시각의 데이터를 선택합니다.
@@ -34,7 +34,7 @@ public class WeekendService {
 
         // 첫 번째 12:00:00 데이터 추가
         weatherDataList.stream()
-                .filter(data -> data.dt_txt().endsWith("12:00:00"))
+                .filter(data -> data.dt_txt().endsWith("06:00:00"))
                 .findFirst()
                 .ifPresent(result::add);
 
