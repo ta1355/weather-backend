@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public record RegisterUserRequestDto(
         @NotNull
-        @Email //이메일 형식
+        @Email(message = "{email.email}") //이메일 형식
         String email,
 
         @NotNull
@@ -20,7 +20,7 @@ public record RegisterUserRequestDto(
         @NotNull
         String nickname,
 
-        @PastOrPresent
+        @PastOrPresent(message = "{birthday.pastOrPresent}")
         @NotNull
         LocalDate birthday
 )
